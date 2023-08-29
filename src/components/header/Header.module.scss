@@ -1,0 +1,17 @@
+.host {
+  position: sticky;
+  top: 0;
+
+  padding: 10px var(--mode-pudding);
+
+  background-color: var(--mode-elements);
+
+  z-index: 2;
+}
+
+.nav {
+  display: flex;
+  column-gap: 20px;
+
+  font-weight: 900;
+}

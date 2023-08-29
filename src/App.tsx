@@ -1,10 +1,17 @@
-import "./App.scss";
+import { Outlet } from "react-router-dom";
 
-function App() {
+import AppCss from "./App.module.scss";
+import { Header } from "./components/header/Header";
+
+function App(): JSX.Element {
   return (
-    <>
-      <h1>Hell</h1>
-    </>
+    <div className={AppCss.host}>
+      <Header />
+
+      <main className={AppCss.main}>
+        <Outlet />
+      </main>
+    </div>
   );
 }
 

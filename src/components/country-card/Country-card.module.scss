@@ -1,0 +1,39 @@
+.host {
+  background-color: var(--mode-elements);
+
+  overflow: hidden;
+
+  width: 320px;
+
+  border-radius: 5px;
+}
+
+.flag {
+  display: block;
+  object-fit: cover;
+}
+
+.main {
+  padding: 15px;
+}
+
+.name {
+  font-size: 18px;
+  font-weight: 800;
+
+  margin-bottom: 20px;
+}
+
+.value {
+  opacity: 0.7;
+}
+
+.segment {
+  white-space: nowrap;
+}
+
+.listOfValue {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
