@@ -1,29 +1,29 @@
+import { Link } from "react-router-dom";
 import { Country } from "../../models/country.type";
 
 import CountryCardCss from "./Country-card.module.scss";
+import { CountryDescriptionItem } from "../country-description-item/Country-description-item";
+import { CountryDescriptionItems } from "../country-description-items/Country-description-items";
+import { memo } from "react";
 
 interface Props {
   country: Country;
 }
 
-export function CountryCard({ country }: Props): JSX.Element {
-  console.log(country);
-
-  const countryCapitals =
-    country.capital?.map((capital, index) => (
-      <span key={index} className={CountryCardCss.value}>
-        {capital}{" "}
-      </span>
-    )) ?? "No capital";
+const CountryCard = memo(function CountryCard({ country }: Props): JSX.Element {
+  console.log("CountryCard", country);
 
   return (
-    <div className={CountryCardCss.host}>
-      <div className={CountryCardCss.header}>
+    <Link
+      to={`/country/${country.name.official}`}
+      className={CountryCardCss.host}
+    >
+      <div>
         <img
           className={CountryCardCss.flag}
           src={country.flags.svg}
           width="320"
-          height="200"
+          height="160"
           alt="Flag"
         />
       </div>
@@ -32,22 +32,21 @@ export function CountryCard({ country }: Props): JSX.Element {
         <div className={CountryCardCss.name}>{country.name.common}</div>
 
         <div className={CountryCardCss.info}>
-          <div>
-            <span>Population: </span>
-            <span className={CountryCardCss.value}>{country.population}</span>
-          </div>
+          <CountryDescriptionItem title="Population">
+            {country.population}
+          </CountryDescriptionItem>
 
-          <div>
-            <span>Region: </span>
-            <span className={CountryCardCss.value}>{country.region}</span>
-          </div>
+          <CountryDescriptionItem title="Region">
+            {country.region}
+          </CountryDescriptionItem>
 
-          <div>
-            <span>Capital: </span>
-            {countryCapitals}
-          </div>
+          <CountryDescriptionItem title="Capital">
+            <CountryDescriptionItems value={country.capital} />
+          </CountryDescriptionItem>
         </div>
       </div>
-    </div>
+    </Link>
   );
-}
+});
+
+export { CountryCard };

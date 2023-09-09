@@ -1,0 +1,38 @@
+.host {
+  display: block;
+}
+
+.title {
+  margin-top: 0;
+}
+
+.info {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 100px;
+
+  align-items: center;
+}
+
+.flag {
+  display: block;
+
+  object-fit: contain;
+
+  width: 100%;
+
+  max-height: 400px;
+}
+
+.descriptionSection {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 50px;
+}
+
+.descriptionList {
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+}

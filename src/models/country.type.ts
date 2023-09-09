@@ -3,7 +3,7 @@ import { CountryFlag } from "./country-flag.type";
 export interface Country {
   readonly altSpellings: unknown;
   readonly area: number;
-  readonly borders: string[];
+  readonly borders?: string[];
   readonly capital?: string[];
   readonly capitalInfo: unknown;
   readonly car: unknown;
@@ -13,7 +13,7 @@ export interface Country {
   readonly cioc: string;
   readonly coatOfArms: unknown;
   readonly continents: string[];
-  readonly currencies: unknown;
+  readonly currencies: { [k: string]: { name: string; symbol: string } };
   readonly demonyms: unknown;
   readonly fifa: string;
   readonly flag: string;
@@ -27,7 +27,7 @@ export interface Country {
   readonly maps: unknown;
   readonly name: {
     readonly common: string;
-    readonly nativeName: unknown;
+    readonly nativeName?: unknown;
     readonly official: string;
   };
   readonly population: number;

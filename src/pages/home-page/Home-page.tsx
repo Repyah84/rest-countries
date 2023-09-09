@@ -1,28 +1,23 @@
-import { useEffect, useState } from "react";
-import { CountryService } from "../../api/country.service";
+import { useLoaderData } from "react-router-dom";
+
 import { Country } from "../../models/country.type";
 import { CountryCard } from "../../components/country-card/Country-card";
 
 import HomePageCss from "./Home-page.module.scss";
 
 export function HomePage(): JSX.Element {
-  const [countries, setCountries] = useState<Country[]>([]);
+  console.log("HomePage");
 
-  const countryData = async () => {
-    const countryList = await CountryService.getCountryList();
-
-    console.log(countryList);
-
-    setCountries(countryList);
-  };
-
-  useEffect(() => {
-    countryData();
-  }, [setCountries]);
+  const countries = useLoaderData() as Country[];
 
   const countryList = countries.map((item, index) => (
     <CountryCard key={index} country={item} />
   ));
 
-  return <div className={HomePageCss.list}>{countryList}</div>;
+  return (
+    <>
+      <h1>HOME PAGE</h1>
+      <div className={HomePageCss.list}>{countryList}</div>;
+    </>
+  );
 }

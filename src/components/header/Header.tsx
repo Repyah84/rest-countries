@@ -1,14 +1,11 @@
-import { Link } from "react-router-dom";
-
 import HeaderCss from "./Header.module.scss";
 
 export function Header(): JSX.Element {
   return (
     <div className={HeaderCss.host}>
-      <nav className={HeaderCss.nav}>
-        <Link to="home">Home</Link>
-        <Link to={`country/${1}`}>Country</Link>
-      </nav>
+      <div className={HeaderCss.header}>
+        <h2>Where in the world?</h2>
+      </div>
     </div>
   );
 }
