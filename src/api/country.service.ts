@@ -1,26 +1,18 @@
 import { BASE_URL } from "../const/bae-url";
 import { Country } from "../models/country.type";
 
-export class CountryService {
-  static async getCountryList(): Promise<Country[]> {
-    const url = new URL("v3.1/all", BASE_URL);
+import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
-    const response = await fetch(`${url.toString()}`);
+export const api = createApi({
+  reducerPath: "endpointsApi",
+  baseQuery: fetchBaseQuery({
+    baseUrl: BASE_URL,
+  }),
+  endpoints: (builder) => ({
+    countries: builder.query<Country[], void>({
+      query: () => "all",
+    }),
+  }),
+});
 
-    const countryList = await response.json();
-
-    return countryList;
-  }
-
-  static async getCountryByFullName(fullName: string): Promise<Country> {
-    const url = new URL(`v3.1/name/${fullName}`, BASE_URL);
-
-    url.searchParams.set("fullText", "true");
-
-    const response = await fetch(`${url.toString()}`);
-
-    const country = await response.json();
-
-    return country[0];
-  }
-}
+export const { useCountriesQuery } = api;

@@ -1,9 +1,8 @@
-import { useLoaderData } from "react-router-dom";
-
-import { Country } from "../../models/country.type";
 import { CountryCard } from "../../components/country-card/Country-card";
 
 import HomePageCss from "./Home-page.module.scss";
+import { useLoaderData } from "react-router-dom";
+import { Country } from "../../models/country.type";
 
 export function HomePage(): JSX.Element {
   console.log("HomePage");

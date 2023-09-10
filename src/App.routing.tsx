@@ -1,7 +1,7 @@
 import { createBrowserRouter, Navigate } from "react-router-dom";
-import { CountryService } from "./api/country.service";
 
 import App from "./App";
+import { countriesData, countryByName } from "./store/store-data-async";
 
 export const router = createBrowserRouter([
   {
@@ -14,7 +14,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "home",
-        loader: async () => CountryService.getCountryList(),
+        loader: () => countriesData(),
         lazy: async () => {
           const { HomePage } = await import("./pages/home-page/Home-page");
           return { Component: HomePage };
@@ -22,8 +22,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "country/:name",
-        loader: async ({ params: { name } }) =>
-          CountryService.getCountryByFullName(name as string),
+        loader: async ({ params: { name } }) => countryByName(name as string),
         lazy: async () => {
           const { CountryPage } = await import(
             "./pages/country-page/Country-page"
