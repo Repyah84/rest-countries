@@ -1,0 +1,28 @@
+.host {
+  display: inline-flex;
+
+  align-items: center;
+
+  column-gap: 10px;
+
+  border-radius: 4px;
+  background-color: var(--mode-elements);
+
+  padding: 0 10px;
+
+  transition: box-shadow 150ms;
+
+  &:focus-within {
+    box-shadow: 0 0 0 2px rebeccapurple;
+  }
+}
+
+.input {
+  font-size: 18px;
+
+  border: none;
+
+  outline: none;
+
+  background: none;
+}

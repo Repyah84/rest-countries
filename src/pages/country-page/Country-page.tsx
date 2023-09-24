@@ -5,13 +5,8 @@ import CountryPageCss from "./Country-page.module.scss";
 import { CountryDescriptionItem } from "../../components/country-description-item/Country-description-item";
 import { CountryDescriptionItems } from "../../components/country-description-items/Country-description-items";
 
-export function CountryPage(): JSX.Element {
+export const CountryPage = (): JSX.Element => {
   const country = useLoaderData() as Country;
-
-  const currencies = Object.keys(country.currencies);
-  const languages = Object.values(country.languages);
-
-  console.log("CountryPage", country);
 
   return (
     <div className={CountryPageCss.host}>
@@ -45,9 +40,11 @@ export function CountryPage(): JSX.Element {
                 {country.subregion}
               </CountryDescriptionItem>
 
-              <CountryDescriptionItem title="Capital">
-                <CountryDescriptionItems value={country.capital} />
-              </CountryDescriptionItem>
+              {country.capital && (
+                <CountryDescriptionItem title="Capital">
+                  <CountryDescriptionItems value={country.capital} />
+                </CountryDescriptionItem>
+              )}
             </div>
 
             <div className={CountryPageCss.descriptionList}>
@@ -55,12 +52,18 @@ export function CountryPage(): JSX.Element {
                 <CountryDescriptionItems value={country.tld} />
               </CountryDescriptionItem>
 
-              <CountryDescriptionItem title="Currencies">
-                <CountryDescriptionItems value={currencies} />
-              </CountryDescriptionItem>
+              {country.currencies && (
+                <CountryDescriptionItem title="Currencies">
+                  <CountryDescriptionItems
+                    value={Object.keys(country.currencies)}
+                  />
+                </CountryDescriptionItem>
+              )}
 
               <CountryDescriptionItem title="Languages">
-                <CountryDescriptionItems value={languages} />
+                <CountryDescriptionItems
+                  value={Object.values(country.languages)}
+                />
               </CountryDescriptionItem>
             </div>
           </div>
@@ -70,4 +73,4 @@ export function CountryPage(): JSX.Element {
       </div>
     </div>
   );
-}
+};

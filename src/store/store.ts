@@ -1,9 +1,15 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 
-import { api } from "../api/country.service";
+import { api } from "../api/country.api";
+
+import filterReducer from "./filter.slice";
+
+import searchReducer from "./search.slice";
 
 const combineReducer = combineReducers({
   [api.reducerPath]: api.reducer,
+  filter: filterReducer,
+  search: searchReducer,
 });
 
 export const store = configureStore({

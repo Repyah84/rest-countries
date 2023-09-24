@@ -1,6 +1,6 @@
 import HeaderCss from "./Header.module.scss";
 
-export function Header(): JSX.Element {
+export const Header = (): JSX.Element => {
   return (
     <div className={HeaderCss.host}>
       <div className={HeaderCss.header}>
@@ -8,4 +8,4 @@ export function Header(): JSX.Element {
       </div>
     </div>
   );
-}
+};

@@ -7,12 +7,7 @@ interface Props {
   children: ReactNode;
 }
 
-const CountryDescriptionItem = memo(function CountryDescriptionItem({
-  title,
-  children,
-}: Props) {
-  console.log("CountryDescriptionItem", title);
-
+const CountryDescriptionItem = memo(({ title, children }: Props) => {
   return (
     <div className={CountryDescriptionItemScc.host}>
       <span>{title}: </span>

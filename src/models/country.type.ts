@@ -13,7 +13,7 @@ export interface Country {
   readonly cioc: string;
   readonly coatOfArms: unknown;
   readonly continents: string[];
-  readonly currencies: { [k: string]: { name: string; symbol: string } };
+  readonly currencies?: { [k: string]: { name: string; symbol: string } };
   readonly demonyms: unknown;
   readonly fifa: string;
   readonly flag: string;

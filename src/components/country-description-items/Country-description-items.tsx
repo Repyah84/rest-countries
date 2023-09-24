@@ -1,22 +1,16 @@
 import { memo } from "react";
 
 interface Props {
-  value: string[] | undefined;
+  value: string[];
 }
 
-const CountryDescriptionItems = memo(function CountryDescriptionItems({
-  value: valueList,
-}: Props) {
-  console.log("CountryDescriptionItems", valueList);
-
-  return (
-    valueList?.map((value, index, arr) => (
-      <span key={index}>
-        {value}
-        {arr.length - 1 === index ? "" : ","}{" "}
-      </span>
-    )) ?? "No capital"
-  );
+const CountryDescriptionItems = memo(({ value }: Props) => {
+  return value.map((value, index, arr) => (
+    <span key={index}>
+      {value}
+      {arr.length - 1 === index ? "" : ","}{" "}
+    </span>
+  ));
 });
 
 export { CountryDescriptionItems };

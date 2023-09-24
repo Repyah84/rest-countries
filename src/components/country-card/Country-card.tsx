@@ -10,9 +10,7 @@ interface Props {
   country: Country;
 }
 
-const CountryCard = memo(function CountryCard({ country }: Props): JSX.Element {
-  console.log("CountryCard", country);
-
+const CountryCard = memo(({ country }: Props): JSX.Element => {
   return (
     <Link
       to={`/country/${country.name.official}`}
@@ -40,9 +38,11 @@ const CountryCard = memo(function CountryCard({ country }: Props): JSX.Element {
             {country.region}
           </CountryDescriptionItem>
 
-          <CountryDescriptionItem title="Capital">
-            <CountryDescriptionItems value={country.capital} />
-          </CountryDescriptionItem>
+          {country.capital && (
+            <CountryDescriptionItem title="Capital">
+              <CountryDescriptionItems value={country.capital} />
+            </CountryDescriptionItem>
+          )}
         </div>
       </div>
     </Link>
