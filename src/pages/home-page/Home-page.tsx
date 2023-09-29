@@ -38,7 +38,7 @@ export const HomePage = (): JSX.Element => {
 
   return (
     <>
-      <div className={HomePageCss.CountryDataPanel}>
+      <div className={HomePageCss.countryDataPanel}>
         <CountryDataPanel />
       </div>
 
