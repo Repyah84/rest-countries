@@ -1,0 +1,1 @@
+import{j as s}from"./index-723b546c.js";const a="_host_45g37_1",c="_value_45g37_5",o={host:a,value:c},l=({title:t,children:n})=>s.jsxs("div",{className:o.host,children:[s.jsxs("span",{children:[t,": "]}),s.jsx("span",{className:o.value,children:n})]}),p=({value:t})=>t.map((n,e,r)=>s.jsxs("span",{children:[n,r.length-1===e?"":","," "]},e));export{l as C,p as a};
