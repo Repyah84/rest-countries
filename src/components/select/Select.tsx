@@ -1,4 +1,4 @@
-import { memo, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import SelectCss from "./Select.module.scss";
 
 export interface Option {
@@ -13,64 +13,58 @@ interface Props {
   selectFn: (value: string[]) => void;
 }
 
-export const Select = memo(
-  ({ value, placeholder, options, selectFn }: Props) => {
-    // console.log("Select");
+export const Select = ({ value, placeholder, options, selectFn }: Props) => {
+  const [open, setOpen] = useState(false);
 
-    const [open, setOpen] = useState(false);
+  const clickHandleEvent = () => {
+    setOpen(false);
+  };
 
-    const clickHandleEvent = () => {
-      setOpen(false);
+  useEffect(() => {
+    window.document.addEventListener("click", clickHandleEvent);
+
+    return () => {
+      window.document.removeEventListener("click", clickHandleEvent);
     };
+  }, []);
 
-    useEffect(() => {
-      window.document.addEventListener("click", clickHandleEvent);
+  const showOptions = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+    e.stopPropagation();
 
-      return () => {
-        window.document.removeEventListener("click", clickHandleEvent);
-      };
-    }, []);
+    setOpen(!open);
+  };
 
-    const showOptions = (
-      e: React.MouseEvent<HTMLButtonElement, MouseEvent>
-    ) => {
-      e.stopPropagation();
+  const data = options.map((option) => (
+    <div
+      key={option.value}
+      onClick={() => selectFn([option.value])}
+      className={SelectCss.option}
+    >
+      <span>{option.title}</span>
 
-      setOpen(!open);
-    };
+      {value.includes(option.value) && (
+        <span className="material-symbols-outlined">done</span>
+      )}
+    </div>
+  ));
 
-    const data = options.map((option) => (
-      <div
-        key={option.value}
-        onClick={() => selectFn([option.value])}
-        className={SelectCss.option}
-      >
-        <span>{option.title}</span>
+  return (
+    <button className={SelectCss.host} onClick={(e) => showOptions(e)}>
+      <div className={SelectCss.select}>
+        <div className={SelectCss.value}>
+          <span className={SelectCss.placeholder}>{placeholder}</span>
 
-        {value.includes(option.value) && (
-          <span className="material-symbols-outlined">done</span>
-        )}
-      </div>
-    ));
-
-    return (
-      <button className={SelectCss.host} onClick={(e) => showOptions(e)}>
-        <div className={SelectCss.select}>
-          <div className={SelectCss.value}>
-            <span className={SelectCss.placeholder}>{placeholder}</span>
-
-            <span>
-              {value.map((value, index) => (
-                <span key={index}>{value}</span>
-              ))}
-            </span>
-          </div>
-
-          <span className="material-symbols-outlined">expand_more</span>
+          <span>
+            {value.map((value, index) => (
+              <span key={index}>{value}</span>
+            ))}
+          </span>
         </div>
 
-        {open && <div className={SelectCss.options}>{data}</div>}
-      </button>
-    );
-  }
-);
+        <span className="material-symbols-outlined">expand_more</span>
+      </div>
+
+      {open && <div className={SelectCss.options}>{data}</div>}
+    </button>
+  );
+};

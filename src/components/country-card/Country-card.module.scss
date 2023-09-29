@@ -13,10 +13,10 @@
 
   color: var(--mode-text);
 
+  box-shadow: 0 0 4px 1px var(--mode-shadow);
+
   &:hover {
     cursor: pointer;
-
-    color: var(--mode-text);
   }
 }
 

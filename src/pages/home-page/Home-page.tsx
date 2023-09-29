@@ -10,8 +10,6 @@ import { RootState } from "../../store/store";
 import HomePageCss from "./Home-page.module.scss";
 
 export const HomePage = (): JSX.Element => {
-  console.log("HomePage");
-
   const countriesLoader = useLoaderData() as Country[];
 
   const countriesByRegion = useSelector(

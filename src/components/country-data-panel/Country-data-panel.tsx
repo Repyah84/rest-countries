@@ -1,4 +1,3 @@
-import { memo } from "react";
 import { Select } from "../select/Select";
 import CountryDataPanelCss from "./Country-data-panel.module.scss";
 
@@ -9,9 +8,7 @@ import { RootState } from "../../store/store";
 import { setFilter } from "../../store/filter.slice";
 import { setSearch } from "../../store/search.slice";
 
-export const CountryDataPanel = memo(() => {
-  // console.log("CountryDataPanel");
-
+export const CountryDataPanel = () => {
   const filterStateValue = useSelector(
     ({ filter: { value } }: RootState) => value
   );
@@ -27,6 +24,12 @@ export const CountryDataPanel = memo(() => {
 
   const searchFn = (value: string) => {
     dispatch(setSearch(value));
+  };
+
+  const reset = () => {
+    dispatch(setFilter(["all"]));
+
+    dispatch(setSearch(""));
   };
 
   const selectOptions: Option[] = [
@@ -54,18 +57,25 @@ export const CountryDataPanel = memo(() => {
 
   return (
     <div className={CountryDataPanelCss.host}>
-      <Search
-        placeholder="Search Country"
-        value={searchStateValue}
-        searchFn={searchFn}
-      />
+      <div>
+        <button className={CountryDataPanelCss.resetButton} onClick={reset}>
+          RESET
+        </button>
+      </div>
+      <div className={CountryDataPanelCss.filter}>
+        <Search
+          placeholder="Search Country"
+          value={searchStateValue}
+          searchFn={searchFn}
+        />
 
-      <Select
-        placeholder="Filter by Region"
-        value={filterStateValue}
-        options={selectOptions}
-        selectFn={onSelect}
-      />
+        <Select
+          placeholder="Filter by Region"
+          value={filterStateValue}
+          options={selectOptions}
+          selectFn={onSelect}
+        />
+      </div>
     </div>
   );
-});
+};

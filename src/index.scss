@@ -4,13 +4,16 @@
   --mode-text: hsl(200, 15%, 8%);
   --mode-input: hsl(0, 0%, 52%);
 
-  --mode-pudding: 2rem;
+  --mode-pudding: 16px;
 
+  --mode-primary: #000000;
+
+  --mode-shadow: hsl(0deg 0% 88.52%);
+
+  @media (min-width: 725px) {
+    --mode-pudding: 35px;
+  }
   // color-scheme: light dark;;
-}
-
-.material-symbols-outlined {
-  font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
 }
 
 * {
@@ -26,7 +29,8 @@ body {
 
 body,
 input,
-button {
+button,
+a {
   font-family: "Nunito Sans", sans-serif;
   line-height: 1.5;
   font-weight: 400;
@@ -41,44 +45,26 @@ button {
   color: var(--mode-text);
 }
 
+button,
+a {
+  display: inline-flex;
+
+  border: none;
+  outline: none;
+  text-decoration: none;
+  background: none;
+
+  cursor: pointer;
+}
+
 .__dark-mode__ {
   --mode-elements: hsl(209, 23%, 22%);
   --mode-background: hsl(207, 26%, 17%);
   --mode-text: hsl(0, 0%, 100%);
   --mode-input: hsl(0, 0%, 52%);
+  --mode-shadow: hsl(0deg 0% 17.66%);
+  --mode-primary: rebeccapurple;
 }
-
-// body {
-//   margin: 0;
-//   display: flex;
-//   place-items: center;
-//   min-width: 320px;
-//   min-height: 100vh;
-// }
-
-// h1 {
-//   font-size: 3.2em;
-//   line-height: 1.1;
-// }
-
-// button {
-//   border-radius: 8px;
-//   border: 1px solid transparent;
-//   padding: 0.6em 1.2em;
-//   font-size: 1em;
-//   font-weight: 500;
-//   font-family: inherit;
-//   background-color: #1a1a1a;
-//   cursor: pointer;
-//   transition: border-color 0.25s;
-// }
-// button:hover {
-//   border-color: #646cff;
-// }
-// button:focus,
-// button:focus-visible {
-//   outline: 4px auto -webkit-focus-ring-color;
-// }
 
 // @media (prefers-color-scheme: light) {
 //   :root {
@@ -91,4 +77,3 @@ button {
 //   button {
 //     background-color: #f9f9f9;
 //   }
-// }

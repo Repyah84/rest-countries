@@ -7,11 +7,40 @@
   background-color: var(--mode-elements);
 
   z-index: 2;
+
+  box-shadow: 0 2px 5px -2px var(--mode-shadow);
 }
 
 .header {
   display: flex;
+
+  justify-content: space-between;
   column-gap: 20px;
 
   font-weight: 900;
+}
+
+.title {
+  font-size: 18px;
+
+  @media (min-width: 725px) {
+    font-size: 24px;
+  }
+}
+
+.action {
+  display: flex;
+  align-items: center;
+}
+
+.theme {
+  display: flex;
+  align-items: center;
+  column-gap: 10px;
+
+  font-size: 14px;
+
+  @media (min-width: 725px) {
+    font-size: 18px;
+  }
 }

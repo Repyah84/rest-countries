@@ -19,12 +19,14 @@
 
   text-align: left;
 
+  box-shadow: 0 0 0 2px var(--mode-shadow);
+
   cursor: pointer;
 
-  transition: box-shadow 150ms;
-
   &:focus {
-    box-shadow: 0 0 0 2px rebeccapurple;
+    box-shadow: 0 0 0 2px var(--mode-primary);
+
+    transition: box-shadow 150ms;
   }
 }
 

@@ -1,4 +1,20 @@
 .host {
   display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+}
+
+.resetButton {
+  color: var(--mode-primary);
+
+  font-weight: 900;
+
+  font-size: 14px;
+}
+
+.filter {
+  display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 30px;
 }

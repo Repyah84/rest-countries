@@ -1,4 +1,4 @@
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 import { Country } from "../../models/country.type";
 
 import CountryPageCss from "./Country-page.module.scss";
@@ -10,6 +10,13 @@ export const CountryPage = (): JSX.Element => {
 
   return (
     <div className={CountryPageCss.host}>
+      <div className={CountryPageCss.action}>
+        <Link to={"homePage"} className={CountryPageCss.link}>
+          <span className="material-symbols-outlined">arrow_back</span>{" "}
+          <span className={CountryPageCss.linkTitle}>Back</span>
+        </Link>
+      </div>
+
       <div className={CountryPageCss.info}>
         <div>
           <img
@@ -68,7 +75,21 @@ export const CountryPage = (): JSX.Element => {
             </div>
           </div>
 
-          <div className={CountryPageCss.border}></div>
+          {country.borders !== undefined ? (
+            <div className={CountryPageCss.bordersWrapper}>
+              <CountryDescriptionItem title="Border Countries">
+                <div className={CountryPageCss.borders}>
+                  {country.borders.map((border) => (
+                    <div className={CountryPageCss.item} key={border}>
+                      {border}
+                    </div>
+                  ))}
+                </div>
+              </CountryDescriptionItem>
+            </div>
+          ) : (
+            <></>
+          )}
         </div>
       </div>
     </div>

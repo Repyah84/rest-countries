@@ -5,15 +5,19 @@
 
   column-gap: 10px;
 
+  min-height: 55px;
+
   border-radius: 4px;
   background-color: var(--mode-elements);
 
   padding: 0 10px;
 
-  transition: box-shadow 150ms;
+  box-shadow: 0 0 0 2px var(--mode-shadow);
 
   &:focus-within {
-    box-shadow: 0 0 0 2px rebeccapurple;
+    box-shadow: 0 0 0 2px var(--mode-primary);
+
+    transition: box-shadow 150ms;
   }
 }
 

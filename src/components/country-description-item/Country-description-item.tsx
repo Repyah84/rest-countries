@@ -1,4 +1,4 @@
-import { ReactNode, memo } from "react";
+import { ReactNode } from "react";
 
 import CountryDescriptionItemScc from "./Country-description-item.module.scss";
 
@@ -7,13 +7,13 @@ interface Props {
   children: ReactNode;
 }
 
-const CountryDescriptionItem = memo(({ title, children }: Props) => {
+const CountryDescriptionItem = ({ title, children }: Props) => {
   return (
     <div className={CountryDescriptionItemScc.host}>
       <span>{title}: </span>
       <span className={CountryDescriptionItemScc.value}>{children}</span>
     </div>
   );
-});
+};
 
 export { CountryDescriptionItem };

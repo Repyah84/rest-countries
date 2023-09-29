@@ -4,13 +4,12 @@ import { Country } from "../../models/country.type";
 import CountryCardCss from "./Country-card.module.scss";
 import { CountryDescriptionItem } from "../country-description-item/Country-description-item";
 import { CountryDescriptionItems } from "../country-description-items/Country-description-items";
-import { memo } from "react";
 
 interface Props {
   country: Country;
 }
 
-const CountryCard = memo(({ country }: Props): JSX.Element => {
+const CountryCard = ({ country }: Props): JSX.Element => {
   return (
     <Link
       to={`/country/${country.name.official}`}
@@ -47,6 +46,6 @@ const CountryCard = memo(({ country }: Props): JSX.Element => {
       </div>
     </Link>
   );
-});
+};
 
 export { CountryCard };
